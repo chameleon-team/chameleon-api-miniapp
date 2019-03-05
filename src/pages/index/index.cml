@@ -87,6 +87,16 @@ class Index {
           url: '/pages/nav/nav'
         }
       }]
+    },{
+      name: '界面',
+      subOpen: true,
+      subList: [{
+        name: 'setNavigationBarTitle',
+        method: 'setNavigationBarTitle',
+        param: {
+          title: 'Chameleon Title'
+        }
+      }]
     }]
   }
   computed = {

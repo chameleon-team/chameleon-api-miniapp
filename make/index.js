@@ -125,29 +125,42 @@ function relaceParamCrossInterface(filePath, item) {
     if (err) return console.log(err);
   });
 
-  // 处理参数别名
+  // 处理方法别名和参数别名
   var aliasMap = item.aliasMap;
   if (!aliasMap || !Object.keys(aliasMap).length) {
     content = content.replace(/\$\{paramAlias_.+}/g, wxParamNameText);
   } else {
     Object.keys(aliasMap).forEach(key => {
-      var paramAliasMap = aliasMap[key];
-      var paramAliasText = ``;
-      wxParam.forEach((p, i) => {
-        lastFH = i == wxParam.length - 1 ? '' : '\r\t\t\t\t'
-        if (paramAliasMap[p.name]) {
-          paramAliasText = paramAliasText + `${paramAliasMap[p.name]}: ${p.name},${lastFH}`;
-        } else {
-          paramAliasText = paramAliasText + `${p.name},${lastFH}`;
-        }
-      })
-      var reg = new RegExp(`\\$\\{paramAlias_${key}\\}`, 'g');
-      content = content.replace(reg, paramAliasText);
-    });
-  }
+      var paramAliasMap = aliasMap[key].param;
+      if (paramAliasMap) {
+        var paramAliasText = ``;
+        wxParam.forEach((p, i) => {
+          lastFH = i == wxParam.length - 1 ? '' : '\r\t\t\t\t'
+          if (paramAliasMap[p.name]) {
+            paramAliasText = paramAliasText + `${paramAliasMap[p.name]}: ${p.name},${lastFH}`;
+          } else {
+            paramAliasText = paramAliasText + `${p.name},${lastFH}`;
+          }
+        })
+        var reg = new RegExp(`\\$\\{paramAlias_${key}\\}`, 'g');
+        content = content.replace(reg, paramAliasText);
+      }
 
-  // 清楚遗留的别名占位符
-  content = content.replace(/\$\{paramAlias_.+}/g, '');
+      // 替换方法别名
+      var aliasMethodName = aliasMap[key].method;
+      if (aliasMethodName) {
+        var endNSMap = {
+          wx: 'wx',
+          alipay: 'my'
+        }
+        var regNS = new RegExp(`${endNSMap[key]}\\.\.+\\(\\{`, 'g');
+        content = content.replace(regNS, `${endNSMap[key]}.${aliasMethodName}({`);
+      }
+    });
+
+    // 兼容没有配置其他端的参数
+    content = content.replace(/\$\{paramAlias_.+}/g, wxParamNameText);
+  }
 
   fs.writeFileSync(filePath, content, 'utf8', function (err) {
     if (err) return console.log(err);
