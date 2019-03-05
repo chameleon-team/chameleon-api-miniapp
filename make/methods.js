@@ -16,6 +16,8 @@ module.exports = [
     }],
     aliasMap: {
       alipay: {
+        // method: '', 方法别名
+        // 参数别名
         param: {
           title: 'content',
           icon: 'type',
