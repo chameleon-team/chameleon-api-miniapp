@@ -6,7 +6,7 @@ export default function navigateToMiniProgram(opt = {}) {
 
     let {
         // 1.这里处理默认参数
-        appId = '',		path = true,		extraData = '',		envVersion = '',
+        appId = '',		path = '',		extraData = '',		envVersion = '',
         success = noop,
         fail = noop,
         complete = noop

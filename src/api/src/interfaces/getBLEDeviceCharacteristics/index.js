@@ -6,7 +6,7 @@ export default function getBLEDeviceCharacteristics(opt = {}) {
 
     let {
         // 1.这里处理默认参数
-        deviceId = '',		serviceId = true,
+        deviceId = '',		serviceId = '',
         success = noop,
         fail = noop,
         complete = noop

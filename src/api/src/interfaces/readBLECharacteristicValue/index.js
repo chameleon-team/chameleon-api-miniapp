@@ -6,7 +6,7 @@ export default function readBLECharacteristicValue(opt = {}) {
 
     let {
         // 1.这里处理默认参数
-        deviceId = '',		serviceId = true,		characteristicId = '',
+        deviceId = '',		serviceId = '',		characteristicId = '',
         success = noop,
         fail = noop,
         complete = noop

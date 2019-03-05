@@ -6,7 +6,7 @@ export default function writeBLECharacteristicValue(opt = {}) {
 
     let {
         // 1.这里处理默认参数
-        deviceId = '',		serviceId = true,		characteristicId = '',		value = '',
+        deviceId = '',		serviceId = '',		characteristicId = '',		value = '',
         success = noop,
         fail = noop,
         complete = noop

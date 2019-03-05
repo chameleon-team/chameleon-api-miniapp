@@ -6,7 +6,7 @@ export default function notifyBLECharacteristicValueChange(opt = {}) {
 
     let {
         // 1.这里处理默认参数
-        deviceId = '',		serviceId = true,		characteristicId = '',		state = '',
+        deviceId = '',		serviceId = '',		characteristicId = '',		state = false,
         success = noop,
         fail = noop,
         complete = noop

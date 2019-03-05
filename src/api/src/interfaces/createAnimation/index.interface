@@ -5,7 +5,7 @@
 
     type OptType = {
         // 3.还需要的参数的type(如果有)
-        
+        duration: number,		timingFunction: string,		delay: number,		transformOrigin: string,
         success: SuccessFunc,
         fail: FailFunc,
         complete: CompleteFunc
@@ -31,14 +31,14 @@
         createAnimation(opt) {
             let {
                 // 4.解构出来参数
-                
+                duration,				timingFunction,				delay,				transformOrigin,
                 success,
                 fail,
                 complete
             } = opt;
             my.createAnimation({
                 // 5.支付宝需要传的参数如果需要做兼容，进行替换，否则直接写在这里
-                
+                duration,				timingFunction,				delay,				transformOrigin,
                 success,
                 fail,
                 complete
