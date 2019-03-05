@@ -127,23 +127,27 @@ function relaceParamCrossInterface(filePath, item) {
 
   // 处理参数别名
   var aliasMap = item.aliasMap;
-  Object.keys(aliasMap).forEach(key => {
-    var paramAliasMap = aliasMap[key];
-    var paramAliasText = ``;
-    wxParam.forEach((p, i) => {
-      lastFH = i == wxParam.length - 1 ? '' : '\r\t\t\t\t'
-      if (paramAliasMap[p.name]) {
-        paramAliasText = paramAliasText + `${paramAliasMap[p.name]}: ${p.name},${lastFH}`;
-      } else {
-        paramAliasText = paramAliasText + `${p.name},${lastFH}`;
-      }
-    })
-    var reg = new RegExp(`\\$\\{paramAlias_${key}\\}`, 'g');
-    content = content.replace(reg, paramAliasText);
-  });
+  if (!aliasMap || !Object.keys(aliasMap).length) {
+    content = content.replace(/\$\{paramAlias_.+}/g, wxParamNameText);
+  } else {
+    Object.keys(aliasMap).forEach(key => {
+      var paramAliasMap = aliasMap[key];
+      var paramAliasText = ``;
+      wxParam.forEach((p, i) => {
+        lastFH = i == wxParam.length - 1 ? '' : '\r\t\t\t\t'
+        if (paramAliasMap[p.name]) {
+          paramAliasText = paramAliasText + `${paramAliasMap[p.name]}: ${p.name},${lastFH}`;
+        } else {
+          paramAliasText = paramAliasText + `${p.name},${lastFH}`;
+        }
+      })
+      var reg = new RegExp(`\\$\\{paramAlias_${key}\\}`, 'g');
+      content = content.replace(reg, paramAliasText);
+    });
+  }
 
   // 清楚遗留的别名占位符
-  content = content.replace(/\$\{\paramAlias_.+}/g, '');
+  content = content.replace(/\$\{paramAlias_.+}/g, '');
 
   fs.writeFileSync(filePath, content, 'utf8', function (err) {
     if (err) return console.log(err);

@@ -5,11 +5,11 @@ module.exports = [
       name: 'title',
       type: 'String',
       default: ''
-    },{
+    }, {
       name: 'icon',
       type: 'String',
       default: 'none'
-    },{
+    }, {
       name: 'duration',
       type: 'Number',
       default: 1500
@@ -21,7 +21,17 @@ module.exports = [
       }
     }
   },
-  { method: 'redirectTo', wxParam: [], aliasMap: {} },
+  {
+    method: 'redirectTo', wxParam: [{
+      name: 'url',
+      type: 'String',
+      default: ''
+    }], aliasMap: {
+      alipay: {
+        
+      }
+    }
+  },
   { method: 'navigateTo', wxParam: [], aliasMap: {} },
   { method: 'navigateBack', wxParam: [], aliasMap: {} },
   { method: 'setNavigationBarTitle', wxParam: [], aliasMap: {} },
