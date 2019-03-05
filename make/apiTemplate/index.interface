@@ -3,24 +3,22 @@
     type FailFunc = (res: CMLObject) => Void;
     type CompleteFunc = (res: CMLObject) => Void;
 
-    type ToastOpt = {
-        title: String,
-        icon: String,
-        duration: Number,
+    type OptType = {
+        // 3.还需要的参数的type(如果有)
         success: SuccessFunc,
         fail: FailFunc,
         complete: CompleteFunc
     };
 
-    interface uiInterface {
-        showToast(opt: ToastOpt): Void
+    interface MethodsInterface {
+        ${method}(opt: OptType): Void
     }
 </script>
 
 <script cml-type="wx">
-    class Method implements uiInterface {
-        showToast(opt) {
-            wx.showToast(opt);
+    class Method implements MethodsInterface {
+        ${method}(opt) {
+            wx.${method}(opt);
         }
     }
 
@@ -28,13 +26,13 @@
 </script>
 
 <script cml-type="alipay">
-    class Method implements uiInterface {
-        showToast(opt) {
-            let { title, icon, duration, success, fail, complete } = opt;
-            my.showToast({
-                content: title,
-                type: icon,
-                duration,
+    class Method implements MethodsInterface {
+        ${method}(opt) {
+            let {
+                // 4.解构出来参数
+            } = opt;
+            my.${method}({
+                // 5.支付宝需要传的参数如果需要做兼容，进行替换，否则直接写在这里
                 success,
                 fail,
                 complete

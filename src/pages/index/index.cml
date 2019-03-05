@@ -66,7 +66,7 @@ class Index {
         name: 'showToast',
         method: 'showToast',
         param: {
-          title: '你好，我是toast',
+          title: '你好toast',
           icon: 'success',
           duration: 2000
         }
