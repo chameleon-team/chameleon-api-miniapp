@@ -72,7 +72,120 @@ class Index {
         }
       }]
     }, {
-      name: '导航',
+      name: '蓝牙',
+      subOpen: true,
+      subList: [{
+        name: 'readBLECharacteristicValue',
+        method: 'readBLECharacteristicValue',
+        param: {
+          deviceId: '',
+          serviceId: '',
+          characteristicId: ''
+        }
+      }, {
+        name: 'onBLEConnectionStateChange',
+        method: 'onBLEConnectionStateChange',
+        param: {
+        }
+      }, {
+        name: 'onBLECharacteristicValueChange',
+        method: 'onBLECharacteristicValueChange',
+        param: {
+        }
+      }, {
+        name: 'notifyBLECharacteristicValueChange',
+        method: 'notifyBLECharacteristicValueChange',
+        param: {
+          deviceId: '',
+          serviceId: '',
+          characteristicId: '',
+          state: true
+        }
+      }, {
+        name: 'getBLEDeviceServices',
+        method: 'getBLEDeviceServices',
+        param: {
+          deviceId: ''
+        }
+      }, {
+        name: 'getBLEDeviceCharacteristics',
+        method: 'onBLEConnectionStateChange',
+        param: {
+          deviceId: '',
+          serviceId: ''
+        }
+      }, {
+        name: 'createBLEConnection',
+        method: 'createBLEConnection',
+        param: {
+          deviceId: ''
+        }
+      }, {
+        name: 'closeBLEConnection',
+        method: 'closeBLEConnection',
+        param: {
+          deviceId: ''
+        }
+      }, {
+        name: 'writeBLECharacteristicValue',
+        method: 'writeBLECharacteristicValue',
+        param: {
+          deviceId: '',
+          serviceId: '',
+          characteristicId: '',
+          value: {}
+        }
+      }, {
+        name: 'startBluetoothDevicesDiscovery',
+        method: 'startBluetoothDevicesDiscovery',
+        param: {
+          services: [],
+          allowDuplicatesKey: true,
+          interval: 1000
+        }
+      }, {
+        name: 'stopBluetoothDevicesDiscovery',
+        method: 'stopBluetoothDevicesDiscovery',
+        param: {
+        }
+      }, {
+        name: 'openBluetoothAdapter',
+        method: 'openBluetoothAdapter',
+        param: {
+        }
+      }, {
+        name: 'onBluetoothDeviceFound',
+        method: 'onBluetoothDeviceFound',
+        param: {
+        }
+      }, {
+        name: 'onBluetoothAdapterStateChange',
+        method: 'onBluetoothAdapterStateChange',
+        param: {
+        }
+      }, {
+        name: 'getConnectedBluetoothDevices',
+        method: 'getConnectedBluetoothDevices',
+        param: {
+        }
+      }, {
+        name: 'getBluetoothDevices',
+        method: 'getBluetoothDevices',
+        param: {
+        }
+      }, {
+        name: 'getBluetoothAdapterState',
+        method: 'getBluetoothAdapterState',
+        param: {
+        }
+      }, {
+        name: 'closeBluetoothAdapter',
+        method: 'closeBluetoothAdapter',
+        param: {
+        }
+      }]
+    }, {
+      name: '页面导航',
       subOpen: true,
       subList: [{
         name: 'navigateTo',
@@ -80,14 +193,14 @@ class Index {
         param: {
           url: '/pages/nav/nav'
         }
-      },{
+      }, {
         name: 'redirectTo',
         method: 'redirectTo',
         param: {
           url: '/pages/nav/nav'
         }
       }]
-    },{
+    }, {
       name: '界面',
       subOpen: true,
       subList: [{
