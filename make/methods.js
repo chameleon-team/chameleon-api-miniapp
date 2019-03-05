@@ -26,14 +26,18 @@ module.exports = [
       name: 'url',
       type: 'String',
       default: ''
-    }], aliasMap: {
-      alipay: {
-        
-      }
-    }
+    }], aliasMap: {}
   },
-  { method: 'navigateTo', wxParam: [], aliasMap: {} },
-  { method: 'navigateBack', wxParam: [], aliasMap: {} },
+  { method: 'navigateTo', wxParam: [{
+    name: 'url',
+    type: 'String',
+    default: ''
+  }], aliasMap: {} },
+  { method: 'navigateBack', wxParam: [{
+    name: 'delta',
+    type: 'Number',
+    default: 1
+  }], aliasMap: {} },
   { method: 'setNavigationBarTitle', wxParam: [], aliasMap: {} },
   { method: 'getLocation', wxParam: [], aliasMap: {} },
   { method: 'reLaunch', wxParam: [], aliasMap: {} },

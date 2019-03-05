@@ -1,20 +1,20 @@
 import index from './index.interface';
 
-export default function ${method}(opt = {}) {
+export default function navigateTo(opt = {}) {
     const noop = (res) => {
     };
 
     let {
         // 1.这里处理默认参数
-        ${wxParamWithType}
+        url = '',
         success = noop,
         fail = noop,
         complete = noop
     } = opt;
 
-    index.${method}({
+    index.navigateTo({
         // 2.这里把参数传进去
-        ${wxParamOnlyName}
+        url,
         success,
         fail,
         complete

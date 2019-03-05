@@ -71,6 +71,22 @@ class Index {
           duration: 2000
         }
       }]
+    }, {
+      name: '导航',
+      subOpen: true,
+      subList: [{
+        name: 'navigateTo',
+        method: 'navigateTo',
+        param: {
+          url: '/pages/nav/nav'
+        }
+      },{
+        name: 'redirectTo',
+        method: 'redirectTo',
+        param: {
+          url: '/pages/nav/nav'
+        }
+      }]
     }]
   }
   computed = {
