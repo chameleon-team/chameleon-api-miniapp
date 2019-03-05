@@ -142,6 +142,9 @@ function relaceParamCrossInterface(filePath, item) {
     content = content.replace(reg, paramAliasText);
   });
 
+  // 清楚遗留的别名占位符
+  content = content.replace(/\$\{\paramAlias_.+}/g, '');
+
   fs.writeFileSync(filePath, content, 'utf8', function (err) {
     if (err) return console.log(err);
   });
