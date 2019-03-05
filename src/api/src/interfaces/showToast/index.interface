@@ -1,14 +1,14 @@
 <script cml-type="interface">
-    type successFunc = (res: CMLObject) => Void
-    type toastOpt = {
+    type SuccessFunc = (res: CMLObject) => Void
+    type ToastOpt = {
         title: String,
         icon: String,
         duration: Number,
-        success: successFunc
+        success: SuccessFunc
     }
 
     interface uiInterface {
-        showToast(opt: toastOpt): Void
+        showToast(opt: ToastOpt): Void
     }
 </script>
 
