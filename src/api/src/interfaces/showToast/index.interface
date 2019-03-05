@@ -1,0 +1,45 @@
+<script cml-type="interface">
+    type successFunc = (res: CMLObject) => Void
+    type toastOpt = {
+        title: String,
+        icon: String,
+        duration: Number,
+        success: successFunc
+    }
+
+    interface uiInterface {
+        showToast(opt: toastOpt): Void
+    }
+</script>
+
+<script cml-type="wx">
+    class Method implements uiInterface {
+        showToast(opt) {
+            let { title = '', icon = 'none', duration = 1500, success } = opt;
+            wx.showToast({
+                title,
+                icon,
+                duration,
+                success
+            });
+        }
+    }
+
+    export default new Method();
+</script>
+
+<script cml-type="alipay">
+    class Method implements uiInterface {
+        showToast(opt) {
+            let { title = '', icon = 'none', duration = 1500, success } = opt;
+            my.showToast({
+                content: title,
+                type: icon,
+                duration,
+                success
+            });
+        }
+    }
+
+    export default new Method();
+</script>
