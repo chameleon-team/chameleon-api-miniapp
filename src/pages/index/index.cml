@@ -6,7 +6,7 @@
           <view class="bwx-demo-page">
             <view class="bwx-demo-page-header">
               <text class="bwx-demo-page-title">Chameleon</text>
-              <text class="bwx-demo-page-desc">Chameleon 端接口能力展示</text>
+              <text class="bwx-demo-page-desc">Chameleon 跨各小程序接口能力展示</text>
             </view>
             <view class="bwx-demo-page-main">
               <view class="bwx-demo-page-main-list">
@@ -18,7 +18,7 @@
                   <view class="bwx-demo-page-main-list-item">
                     <view
                       class="bwx-demo-page-main-list-item-panel"
-                      c-bind:tap="itemClick(item)"
+                      c-bind:tap="itemClick(index)"
                     >
                       <text class="{{item.subOpen ? 'bwx-demo-page-main-list-item-panel-text  color-grey' : 'bwx-demo-page-main-list-item-panel-text'}}">{{item.name}}</text>
                     </view>
@@ -61,7 +61,7 @@ class Index {
   data = {
     lists: [{
       name: '交互反馈',
-      subOpen: true,
+      subOpen: false,
       subList: [{
         name: 'showToast',
         method: 'showToast',
@@ -73,7 +73,7 @@ class Index {
       }]
     }, {
       name: '蓝牙',
-      subOpen: true,
+      subOpen: false,
       subList: [{
         name: 'readBLECharacteristicValue',
         method: 'readBLECharacteristicValue',
@@ -186,7 +186,7 @@ class Index {
       }]
     }, {
       name: '页面导航',
-      subOpen: true,
+      subOpen: false,
       subList: [{
         name: 'navigateTo',
         method: 'navigateTo',
@@ -202,7 +202,7 @@ class Index {
       }]
     }, {
       name: '界面',
-      subOpen: true,
+      subOpen: false,
       subList: [{
         name: 'setNavigationBarTitle',
         method: 'setNavigationBarTitle',
@@ -219,8 +219,8 @@ class Index {
 
   }
   methods = {
-    itemClick(item) {
-      item.subOpen = !item.subOpen
+    itemClick(index) {
+      this.lists[index].subOpen = !this.lists[index].subOpen;
     },
     subItemClick(index, subIndex) {
       const item = this.lists[index]['subList'][subIndex];
