@@ -11,7 +11,6 @@ var templatePath = path.join(projectRoot, './make/apiTemplate');
 // 处理
 methods.forEach(item => {
   var method = item.method;
-  var wxParam = item.wxParam;
   var methodPath = path.join(apiInterfacesPath, method);
 
   try {
@@ -21,7 +20,11 @@ methods.forEach(item => {
     relacePlaceholder(path.join(methodPath, './index.js'), method);
     relacePlaceholder(path.join(methodPath, './index.interface'), method);
     // 替换index.js里的默认参数
-    relacewWxParam(path.join(methodPath, './index.js'), wxParam);
+    relacewWxParam(path.join(methodPath, './index.js'), item);
+    // 处理interface里的参数type
+    relaceParamTypeInterface(path.join(methodPath, './index.interface'), item);
+    // 处理interface里各端的结构出的参数
+    relaceParamCrossInterface(path.join(methodPath, './index.interface'), item);
   } catch (e) {
     console.log(e);
   }
@@ -43,9 +46,10 @@ function relacePlaceholder(filePath, method) {
 /**
  * 处理index.js里的参数
  * @param {String} filePath 文件路径
- * @param {Object} wxParam 参数
+ * @param {Object} item 数据
  */
-function relacewWxParam(filePath, wxParam) {
+function relacewWxParam(filePath, item) {
+  var wxParam = item.wxParam;
   var content = fs.readFileSync(filePath).toString('utf8');
 
   // 处理解构默认值
@@ -71,6 +75,72 @@ function relacewWxParam(filePath, wxParam) {
     wxParamNameText = wxParamNameText + `${p.name},${lastFH}`;
   })
   content = content.replace(/\$\{wxParamOnlyName\}/g, wxParamNameText);
+
+  fs.writeFileSync(filePath, content, 'utf8', function (err) {
+    if (err) return console.log(err);
+  });
+}
+
+/**
+ * 处理index.interface里的参数
+ * @param {String} filePath 文件路径
+ * @param {Object} item 数据
+ */
+function relaceParamTypeInterface(filePath, item) {
+  var wxParam = item.wxParam;
+  var content = fs.readFileSync(filePath).toString('utf8');
+
+  // 处理interface处的参数和类型
+  var wxParamIFTypeText = ``;
+  wxParam.forEach((p, i) => {
+    var type = p.type;
+    lastFH = i == wxParam.length - 1 ? '' : '\r\t\t'
+    wxParamIFTypeText = wxParamIFTypeText + `${p.name}: ${type},${lastFH}`;
+  })
+  content = content.replace(/\$\{paramInterfaceType\}/g, wxParamIFTypeText);
+
+  fs.writeFileSync(filePath, content, 'utf8', function (err) {
+    if (err) return console.log(err);
+  });
+}
+
+/**
+ * 处理interface文件里各端情况
+ * @param {String} filePath 文件路径
+ * @param {Object} item 数据
+ */
+function relaceParamCrossInterface(filePath, item) {
+  var wxParam = item.wxParam;
+  var content = fs.readFileSync(filePath).toString('utf8');
+
+  // 处理结构默认参数
+  var wxParamNameText = ``;
+  wxParam.forEach((p, i) => {
+    lastFH = i == wxParam.length - 1 ? '' : '\r\t\t\t\t'
+    wxParamNameText = wxParamNameText + `${p.name},${lastFH}`;
+  })
+  content = content.replace(/\$\{wxParamOnlyName\}/g, wxParamNameText);
+
+  fs.writeFileSync(filePath, content, 'utf8', function (err) {
+    if (err) return console.log(err);
+  });
+
+  // 处理参数别名
+  var aliasMap = item.aliasMap;
+  Object.keys(aliasMap).forEach(key => {
+    var paramAliasMap = aliasMap[key];
+    var paramAliasText = ``;
+    wxParam.forEach((p, i) => {
+      lastFH = i == wxParam.length - 1 ? '' : '\r\t\t\t\t'
+      if (paramAliasMap[p.name]) {
+        paramAliasText = paramAliasText + `${paramAliasMap[p.name]}: ${p.name},${lastFH}`;
+      } else {
+        paramAliasText = paramAliasText + `${p.name},${lastFH}`;
+      }
+    })
+    var reg = new RegExp(`\\$\\{paramAlias_${key}\\}`, 'g');
+    content = content.replace(reg, paramAliasText);
+  });
 
   fs.writeFileSync(filePath, content, 'utf8', function (err) {
     if (err) return console.log(err);

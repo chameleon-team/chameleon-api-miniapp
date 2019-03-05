@@ -5,6 +5,9 @@
 
     type OptType = {
         // 3.还需要的参数的type(如果有)
+        title: String,
+		icon: String,
+		duration: Number,
         success: SuccessFunc,
         fail: FailFunc,
         complete: CompleteFunc
@@ -30,9 +33,18 @@
         showToast(opt) {
             let {
                 // 4.解构出来参数
+                title,
+				icon,
+				duration,
+                success,
+                fail,
+                complete
             } = opt;
             my.showToast({
                 // 5.支付宝需要传的参数如果需要做兼容，进行替换，否则直接写在这里
+                content: title,
+				type: icon,
+				duration,
                 success,
                 fail,
                 complete
