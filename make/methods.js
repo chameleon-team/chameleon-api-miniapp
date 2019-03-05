@@ -56,13 +56,86 @@ module.exports = [
     }
   },
   { method: 'getLocation', wxParam: [], aliasMap: {} },
-  { method: 'reLaunch', wxParam: [], aliasMap: {} },
-  { method: 'hideLoading', wxParam: [], aliasMap: {} },
-  { method: 'showLoading', wxParam: [], aliasMap: {} },
-  { method: 'showModal', wxParam: [], aliasMap: {} },
+  { method: 'reLaunch', wxParam: [
+    {
+      name: 'url',
+      type: 'string',
+      default: ''
+    },
+  ], aliasMap: {} },
+  { method: 'hideLoading', wxParam: [
+    {
+      name: 'page',
+      type: 'CMLObject',
+      default: {}
+    },
+  ], aliasMap: {} }, // 支付宝端某些场景需要传入page实例
+  { method: 'showLoading', wxParam: [
+    {
+      name: 'title',
+      type: 'string',
+      default: ''
+    },
+  ], aliasMap: {
+    alipay: {
+      param: {
+        title: 'content',
+      }
+    },
+  } },
+  { method: 'showModal', wxParam: [
+    {
+      name: 'title',
+      type: 'string',
+      default: ''
+    },
+    {
+      name: 'content',
+      type: 'string',
+      default: ''
+    },
+    {
+      name: 'cancelText',
+      type: 'string',
+      default: '取消'
+    },
+    {
+      name: 'confirmText',
+      type: 'string',
+      default: '确定'
+    },
+  ], aliasMap: {
+    alipay: {
+      param: {
+        cancelText: 'cancelButtonText',
+        confirmText: 'confirmButtonText',
+      }
+    },
+  } },
   { method: 'getSystemInfoSync', wxParam: [], aliasMap: {} },
   { method: 'getSystemInfo', wxParam: [], aliasMap: {} },
-  { method: 'createAnimation', wxParam: [], aliasMap: {} },
+  { method: 'createAnimation', wxParam: [
+    {
+      name: 'duration',
+      type: 'number',
+      default: 400
+    },
+    {
+      name: 'timingFunction',
+      type: 'string',
+      default: 'linear'
+    },
+    {
+      name: 'delay',
+      type: 'number',
+      default: 0
+    },
+    {
+      name: 'transformOrigin',
+      type: 'string',
+      default: '50% 50% 0'
+    },
+  ], aliasMap: {} }, // 没有success
   { method: 'request', wxParam: [], aliasMap: {} },
   { method: 'uploadFile', wxParam: [], aliasMap: {} },
   { method: 'createMapContext', wxParam: [], aliasMap: {} }, // 入参不是Object
