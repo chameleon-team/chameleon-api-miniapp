@@ -1,5 +1,5 @@
-import showToast from './src/interfaces/showToast/index.interface';
+import showToast from './src/interfaces/showToast/index.js';
 
 export default {
-    ...showToast
+    showToast
 };

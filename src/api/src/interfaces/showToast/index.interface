@@ -1,11 +1,16 @@
 <script cml-type="interface">
-    type SuccessFunc = (res: CMLObject) => Void
+    type SuccessFunc = (res: CMLObject) => Void;
+    type FailFunc = (res: CMLObject) => Void;
+    type CompleteFunc = (res: CMLObject) => Void;
+
     type ToastOpt = {
         title: String,
         icon: String,
         duration: Number,
-        success: SuccessFunc
-    }
+        success: SuccessFunc,
+        fail: FailFunc,
+        complete: CompleteFunc
+    };
 
     interface uiInterface {
         showToast(opt: ToastOpt): Void
@@ -15,13 +20,7 @@
 <script cml-type="wx">
     class Method implements uiInterface {
         showToast(opt) {
-            let { title = '', icon = 'none', duration = 1500, success } = opt;
-            wx.showToast({
-                title,
-                icon,
-                duration,
-                success
-            });
+            wx.showToast(opt);
         }
     }
 
@@ -31,12 +30,14 @@
 <script cml-type="alipay">
     class Method implements uiInterface {
         showToast(opt) {
-            let { title = '', icon = 'none', duration = 1500, success } = opt;
+            let { title, icon, duration, success, fail, complete } = opt;
             my.showToast({
                 content: title,
                 type: icon,
                 duration,
-                success
+                success,
+                fail,
+                complete
             });
         }
     }

@@ -31,7 +31,7 @@
                         c-for="{{ item.subList }}"
                         c-for-index="subIndex"
                         c-for-item="subItem"
-                        c-bind:tap="subItemClick(subItem)"
+                        c-bind:tap="subItemClick(index, subIndex)"
                       >
                         <text class="bwx-demo-page-main-list-item-panel-sub-list-item-link-text">{{subItem.name}}</text>
                       </view>
@@ -53,9 +53,7 @@ console.log(cmlMini);
 
 const say = msg => {
   cmlMini.showToast({
-    title: JSON.stringify(msg),
-    icon: 'none',
-    duration: 3000
+    title: JSON.stringify(msg)
   });
 }
 
@@ -70,8 +68,7 @@ class Index {
         param: {
           title: '你好，我是toast',
           icon: 'success',
-          duration: 2000,
-          success: say
+          duration: 2000
         }
       }]
     }]
@@ -86,10 +83,10 @@ class Index {
     itemClick(item) {
       item.subOpen = !item.subOpen
     },
-    subItemClick(subItem) {
-      const method = subItem.method;
-      var param = subItem.param || {};
-      param.success = param.success || say;
+    subItemClick(index, subIndex) {
+      const item = this.lists[index]['subList'][subIndex];
+      const method = item.method;
+      var param = item.param || {};
       cmlMini[method](param);
     }
   }
