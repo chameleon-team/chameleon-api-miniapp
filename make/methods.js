@@ -78,7 +78,7 @@ module.exports = [
     {
       name: 'path',
       type: 'string',
-      default: true
+      default: ''
     },
     {
       name: 'extraData',
@@ -102,7 +102,7 @@ module.exports = [
     {
       name: 'serviceId',
       type: 'string',
-      default: true
+      default: ''
     },
     {
       name: 'characteristicId',
@@ -121,7 +121,7 @@ module.exports = [
     {
       name: 'serviceId',
       type: 'string',
-      default: true
+      default: ''
     },
     {
       name: 'characteristicId',
@@ -131,7 +131,7 @@ module.exports = [
     {
       name: 'state',
       type: 'Boolean',
-      default: ''
+      default: false
     },
   ], aliasMap: {} },
   { method: 'getBLEDeviceServices', wxParam: [
@@ -150,7 +150,7 @@ module.exports = [
     {
       name: 'serviceId',
       type: 'string',
-      default: true
+      default: ''
     },
   ], aliasMap: {} },
   { method: 'createBLEConnection', wxParam: [
@@ -184,7 +184,7 @@ module.exports = [
     {
       name: 'serviceId',
       type: 'string',
-      default: true
+      default: ''
     },
     {
       name: 'characteristicId',
@@ -202,7 +202,7 @@ module.exports = [
     {
       name: 'services',
       type: 'Array',
-      default: ''
+      default: []
     },
     {
       name: 'allowDuplicatesKey',
