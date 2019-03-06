@@ -71,12 +71,16 @@ class Index {
           duration: 2000
         }
       },{
-        name: 'showToast',
-        method: 'showToast',
+        name: 'showLoading',
+        method: 'showLoading',
         param: {
-          title: '你好toast',
-          icon: 'success',
-          duration: 2000
+          title: ''
+        }
+      }, {
+        name: 'hideLoading',
+        method: 'hideLoading',
+        param: {
+          page: {}
         }
       }]
     }, {
@@ -235,6 +239,12 @@ class Index {
       const method = item.method;
       var param = item.param || {};
       cmlMini[method](param);
+
+      if(method == 'showLoading') {
+        setTimeout(()=>{
+          cmlMini.hideLoading();
+        }, 5000)
+      }
     }
   }
   beforeCreate(res) {
