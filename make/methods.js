@@ -108,6 +108,7 @@ module.exports = [
     },
   ], aliasMap: {
     alipay: {
+      method: 'confirm',
       param: {
         cancelText: 'cancelButtonText',
         confirmText: 'confirmButtonText',
