@@ -66,7 +66,7 @@ function relacewWxParam(filePath, item) {
     lastFH = i == wxParam.length - 1 ? '' : '\r\t\t'
     wxParamDefaultText = wxParamDefaultText + `${p.name} = ${defaultValue},${lastFH}`;
   })
-  content = content.replace(/\$\{wxParamWithType\}/g, wxParamDefaultText);
+  content = content.replace(/\$\{wxParamWithValue\}/g, wxParamDefaultText);
 
   // 传递解构默认值
   var wxParamNameText = ``;
