@@ -36,7 +36,7 @@
                 fail,
                 complete
             } = opt;
-            my.showModal({
+            my.confirm({
                 // 5.支付宝需要传的参数如果需要做兼容，进行替换，否则直接写在这里
                 title,				content,				cancelButtonText: cancelText,				confirmButtonText: confirmText,
                 success,
