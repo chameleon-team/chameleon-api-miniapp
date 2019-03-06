@@ -1,25 +1,13 @@
 <script cml-type="interface">
-    type SuccessFunc = (res: CMLObject) => Void;
-    type FailFunc = (res: CMLObject) => Void;
-    type CompleteFunc = (res: CMLObject) => Void;
-
-    type OptType = {
-        // 3.还需要的参数的type(如果有)
-        
-        success: SuccessFunc,
-        fail: FailFunc,
-        complete: CompleteFunc
-    };
-
     interface MethodsInterface {
-        createMapContext(opt: OptType): Void
+        createMapContext(mapId: String, context: CMLObject): CMLObject
     }
 </script>
 
 <script cml-type="wx">
     class Method implements MethodsInterface {
-        createMapContext(opt) {
-            wx.createMapContext(opt);
+        createMapContext(mapId, context) {
+            return wx.createMapContext(mapId, context);
         }
     }
 
@@ -28,21 +16,8 @@
 
 <script cml-type="alipay">
     class Method implements MethodsInterface {
-        createMapContext(opt) {
-            let {
-                // 4.解构出来参数
-                
-                success,
-                fail,
-                complete
-            } = opt;
-            my.createMapContext({
-                // 5.支付宝需要传的参数如果需要做兼容，进行替换，否则直接写在这里
-                
-                success,
-                fail,
-                complete
-            });
+        createMapContext(mapId, context) {
+            return my.createMapContext(mapId);
         }
     }
 

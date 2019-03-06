@@ -41,6 +41,7 @@
               </view>
             </view>
           </view>
+          <orgin-map name="" id="t-map"></orgin-map>
         </view>
       </scroller>
     </view>
@@ -49,6 +50,7 @@
 
 <script>
 import cmlMini from '../../api/index.js';
+import cml from '@didi/chameleon-api';
 console.log(cmlMini);
 
 const say = msg => {
@@ -318,15 +320,6 @@ class Index {
           }
         }
       }],
-    },{
-      name: '文件操作',
-      subOpen: false,
-      subList: [{
-        name: 'uploadFile',
-        method: 'uploadFile',
-        param: {
-        }
-      }]
     }]
   }
   computed = {
@@ -350,7 +343,29 @@ class Index {
           cmlMini.hideLoading();
         }, 5000)
       }
-    }
+    },
+    testUploadFile() {
+      cml.chooseImage({type: 'album'}).then(res => {
+        console.log(res)
+        cmlMini.uploadFile({
+          url: 'https://http://172.22.138.34:8080',
+          filePath: res.WxTempFilePaths[0],
+          name: 'iiimmmggg',
+          fileType: 'image',
+          success(fileRes) {
+            console.log(fileRes, 'uploadFile success')
+          },
+          fail(err) {
+            console.log(err, 'uplaodFile fail')
+            // wx返回 {errMsg: ''}
+            // alipay返回 {error: 12}
+          },
+          complete(info) {
+            console.log(info, 'uploadFile complete')
+          }
+        })
+      })
+    },
   }
   beforeCreate(res) {
   }
@@ -363,7 +378,11 @@ class Index {
     cmlMini.onBLECharacteristicValueChange(function (characteristic) {
       console.log('characteristic value comed:', characteristic)
     })
+    // uploadFile演示
+    // this.testUploadFile()
 
+    // createMapContext演示
+    this.mapCtx = cmlMini.createMapContext('t-map', this)
   }
   beforeDestroy(res) {
   }

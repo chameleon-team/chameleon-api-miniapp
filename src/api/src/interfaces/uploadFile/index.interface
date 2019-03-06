@@ -5,7 +5,7 @@
 
     type OptType = {
         // 3.还需要的参数的type(如果有)
-        
+        url: string,		filePath: string,		name: string,		fileType: string,		header: CMLObject,		formData: CMLObject,
         success: SuccessFunc,
         fail: FailFunc,
         complete: CompleteFunc
@@ -31,14 +31,14 @@
         uploadFile(opt) {
             let {
                 // 4.解构出来参数
-                
+                url,				filePath,				name,				fileType,				header,				formData,
                 success,
                 fail,
                 complete
             } = opt;
             my.uploadFile({
                 // 5.支付宝需要传的参数如果需要做兼容，进行替换，否则直接写在这里
-                
+                url,				filePath,				fileName: name,				fileType,				header,				formData,
                 success,
                 fail,
                 complete

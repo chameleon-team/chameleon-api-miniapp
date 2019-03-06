@@ -139,7 +139,7 @@ module.exports = [
       default: '50% 50% 0'
     },
   ], aliasMap: {} }, // 没有success
-  { method: 'request', wxParam: [], aliasMap: {} },
+  // { method: 'request', wxParam: [], aliasMap: {} },
   { method: 'uploadFile', wxParam: [
     {
       name: 'url',
@@ -178,8 +178,8 @@ module.exports = [
       }
     }
   } },
-  { method: 'createMapContext', wxParam: [], aliasMap: {} }, // 入参不是Object
-  { method: 'MapContext', wxParam: [], aliasMap: {} }, // 入参不是Object
+  // { method: 'createMapContext', wxParam: [], aliasMap: {} }, // 入参不是Object
+  // { method: 'MapContext', wxParam: [], aliasMap: {} }, // 入参不是Object
   { method: 'navigateToMiniProgram', wxParam: [
     {
       name: 'appId',
@@ -327,9 +327,9 @@ module.exports = [
     },
   ], aliasMap: {} }, // 入参及回调有Array类型, 需要手动声明内部类型
   { method: 'openBluetoothAdapter', wxParam: [], aliasMap: {} },
-  { method: 'onBluetoothDeviceFound', wxParam: [], aliasMap: {} }, // 只有一个回调函数作为入参 | 没有success/fail/complete
-  { method: 'onBluetoothAdapterStateChange', wxParam: [], aliasMap: {} }, // 只有一个回调函数作为入参 | 没有success/fail/complete
-  { method: 'getConnectedBluetoothDevices', wxParam: [], aliasMap: {} }, // 入参及回调有Array类型, 需要手动声明内部类型
+  // { method: 'onBluetoothDeviceFound', wxParam: [], aliasMap: {} }, // 只有一个回调函数作为入参 | 没有success/fail/complete
+  // { method: 'onBluetoothAdapterStateChange', wxParam: [], aliasMap: {} }, // 只有一个回调函数作为入参 | 没有success/fail/complete
+  // { method: 'getConnectedBluetoothDevices', wxParam: [], aliasMap: {} }, // 入参及回调有Array类型, 需要手动声明内部类型
   { method: 'getBluetoothDevices', wxParam: [], aliasMap: {} },
   { method: 'getBluetoothAdapterState', wxParam: [], aliasMap: {} },
   { method: 'closeBluetoothAdapter', wxParam: [], aliasMap: {} },

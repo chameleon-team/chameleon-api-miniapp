@@ -6,7 +6,12 @@ export default function uploadFile(opt = {}) {
 
     let {
         // 1.这里处理默认参数
-        
+        url = '',
+		filePath = '',
+		name = '',
+		fileType = 'image',
+		header = {},
+		formData = {},
         success = noop,
         fail = noop,
         complete = noop
@@ -14,7 +19,12 @@ export default function uploadFile(opt = {}) {
 
     index.uploadFile({
         // 2.这里把参数传进去
-        
+        url,
+		filePath,
+		name,
+		fileType,
+		header,
+		formData,
         success,
         fail,
         complete
