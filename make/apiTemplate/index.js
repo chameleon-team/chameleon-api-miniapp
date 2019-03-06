@@ -6,7 +6,7 @@ export default function ${method}(opt = {}) {
 
     let {
         // 1.这里处理默认参数
-        ${wxParamWithType}
+        ${wxParamWithValue}
         success = noop,
         fail = noop,
         complete = noop

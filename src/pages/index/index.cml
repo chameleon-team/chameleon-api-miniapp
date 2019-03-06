@@ -70,6 +70,18 @@ class Index {
           icon: 'success',
           duration: 2000
         }
+      },{
+        name: 'showLoading',
+        method: 'showLoading',
+        param: {
+          title: ''
+        }
+      }, {
+        name: 'hideLoading',
+        method: 'hideLoading',
+        param: {
+          page: {}
+        }
       }]
     }, {
       name: '蓝牙',
@@ -227,6 +239,12 @@ class Index {
       const method = item.method;
       var param = item.param || {};
       cmlMini[method](param);
+
+      if(method == 'showLoading') {
+        setTimeout(()=>{
+          cmlMini.hideLoading();
+        }, 5000)
+      }
     }
   }
   beforeCreate(res) {
