@@ -70,6 +70,14 @@ class Index {
           icon: 'success',
           duration: 2000
         }
+      },{
+        name: 'showToast',
+        method: 'showToast',
+        param: {
+          title: '你好toast',
+          icon: 'success',
+          duration: 2000
+        }
       }]
     }, {
       name: '蓝牙',

@@ -6,7 +6,7 @@ export default function hideLoading(opt = {}) {
 
     let {
         // 1.这里处理默认参数
-        page = [object Object],
+        page = {},
         success = noop,
         fail = noop,
         complete = noop

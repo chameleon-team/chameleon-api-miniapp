@@ -6,7 +6,7 @@ export default function startBluetoothDevicesDiscovery(opt = {}) {
 
     let {
         // 1.这里处理默认参数
-        services = ,		allowDuplicatesKey = true,		interval = '',
+        services = [],		allowDuplicatesKey = true,		interval = '',
         success = noop,
         fail = noop,
         complete = noop

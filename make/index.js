@@ -63,6 +63,11 @@ function relacewWxParam(filePath, item) {
         defaultValue = `\'${defaultValue}\'`;
       }
     }
+
+    if (typeof defaultValue == 'object') {
+      defaultValue = JSON.stringify(defaultValue);
+    }
+
     lastFH = i == wxParam.length - 1 ? '' : '\r\t\t'
     wxParamDefaultText = wxParamDefaultText + `${p.name} = ${defaultValue},${lastFH}`;
   })
