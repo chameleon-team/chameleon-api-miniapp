@@ -1,5 +1,5 @@
 {
-  "name": "chameleon-api-miniapp",
+  "name": "@didi/chameleon-api-miniapp",
   "version": "0.0.1",
   "description": "Chameleon跨多端小程序api",
   "main": "index.js",
