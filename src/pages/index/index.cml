@@ -82,6 +82,18 @@ class Index {
         param: {
           page: {}
         }
+      }, {
+        name: 'showModal',
+        method: 'showModal',
+        param: {
+          title: '提醒',
+          content: '你的假期余额不足',
+          cancelText: '好的',
+          confirmText: '充值',
+          success(res) {
+            console.log(res);
+          }
+        }
       }]
     }, {
       name: '蓝牙',
@@ -211,6 +223,12 @@ class Index {
         param: {
           url: '/pages/nav/nav'
         }
+      },{
+        name: 'reLaunch',
+        method: 'reLaunch',
+        param: {
+          url: '/pages/nav/nav'
+        }
       }]
     }, {
       name: '界面',
@@ -220,6 +238,30 @@ class Index {
         method: 'setNavigationBarTitle',
         param: {
           title: 'Chameleon Title'
+        }
+      }]
+    },{
+      name: '地理位置',
+      subOpen: false,
+      subList: [{
+        name: 'getLocation',
+        method: 'getLocation',
+        param: {
+          success(res) {
+            console.log(res);
+          }
+        }
+      }]
+    },{
+      name: '系统信息',
+      subOpen: false,
+      subList: [{
+        name: 'getSystemInfo',
+        method: 'getSystemInfo',
+        param: {
+          success(res) {
+            console.log(res);
+          }
         }
       }]
     }]

@@ -114,7 +114,7 @@ module.exports = [
       }
     },
   } },
-  { method: 'getSystemInfoSync', wxParam: [], aliasMap: {} },
+  // { method: 'getSystemInfoSync', wxParam: [], aliasMap: {} },
   { method: 'getSystemInfo', wxParam: [], aliasMap: {} },
   { method: 'createAnimation', wxParam: [
     {
