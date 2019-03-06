@@ -317,6 +317,15 @@ class Index {
             say(res);
           }
         }
+      }],
+    },{
+      name: '文件操作',
+      subOpen: false,
+      subList: [{
+        name: 'uploadFile',
+        method: 'uploadFile',
+        param: {
+        }
       }]
     }]
   }

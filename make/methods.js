@@ -140,7 +140,44 @@ module.exports = [
     },
   ], aliasMap: {} }, // 没有success
   { method: 'request', wxParam: [], aliasMap: {} },
-  { method: 'uploadFile', wxParam: [], aliasMap: {} },
+  { method: 'uploadFile', wxParam: [
+    {
+      name: 'url',
+      type: 'string',
+      default: ''
+    },
+    {
+      name: 'filePath',
+      type: 'string',
+      default: ''
+    },
+    {
+      name: 'name',
+      type: 'string',
+      default: ''
+    },
+    {
+      name: 'fileType',
+      type: 'string',
+      default: ''
+    },
+    {
+      name: 'header',
+      type: 'CMLObject',
+      default: {}
+    },
+    {
+      name: 'formData',
+      type: 'CMLObject',
+      default: {}
+    },
+  ], aliasMap: {
+    alipay: {
+      param: {
+        name: 'fileName'
+      }
+    }
+  } },
   { method: 'createMapContext', wxParam: [], aliasMap: {} }, // 入参不是Object
   { method: 'MapContext', wxParam: [], aliasMap: {} }, // 入参不是Object
   { method: 'navigateToMiniProgram', wxParam: [
