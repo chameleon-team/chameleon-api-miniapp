@@ -70,7 +70,7 @@ class Index {
           icon: 'success',
           duration: 2000
         }
-      },{
+      }, {
         name: 'showLoading',
         method: 'showLoading',
         param: {
@@ -104,17 +104,26 @@ class Index {
         param: {
           deviceId: '',
           serviceId: '',
-          characteristicId: ''
+          characteristicId: '',
+          success(res) {
+            console.log(res);
+          }
         }
       }, {
         name: 'onBLEConnectionStateChange',
         method: 'onBLEConnectionStateChange',
         param: {
+          success(res) {
+            console.log(res);
+          }
         }
       }, {
         name: 'onBLECharacteristicValueChange',
         method: 'onBLECharacteristicValueChange',
         param: {
+          success(res) {
+            console.log(res);
+          }
         }
       }, {
         name: 'notifyBLECharacteristicValueChange',
@@ -123,32 +132,47 @@ class Index {
           deviceId: '',
           serviceId: '',
           characteristicId: '',
-          state: true
+          state: true,
+          success(res) {
+            console.log(res);
+          }
         }
       }, {
         name: 'getBLEDeviceServices',
         method: 'getBLEDeviceServices',
         param: {
-          deviceId: ''
+          deviceId: '',
+          success(res) {
+            console.log(res);
+          }
         }
       }, {
         name: 'getBLEDeviceCharacteristics',
         method: 'onBLEConnectionStateChange',
         param: {
           deviceId: '',
-          serviceId: ''
+          serviceId: '',
+          success(res) {
+            console.log(res);
+          }
         }
       }, {
         name: 'createBLEConnection',
         method: 'createBLEConnection',
         param: {
-          deviceId: ''
+          deviceId: '',
+          success(res) {
+            console.log(res);
+          }
         }
       }, {
         name: 'closeBLEConnection',
         method: 'closeBLEConnection',
         param: {
-          deviceId: ''
+          deviceId: '',
+          success(res) {
+            console.log(res);
+          }
         }
       }, {
         name: 'writeBLECharacteristicValue',
@@ -157,7 +181,10 @@ class Index {
           deviceId: '',
           serviceId: '',
           characteristicId: '',
-          value: {}
+          value: {},
+          success(res) {
+            console.log(res);
+          }
         }
       }, {
         name: 'startBluetoothDevicesDiscovery',
@@ -165,47 +192,74 @@ class Index {
         param: {
           services: [],
           allowDuplicatesKey: true,
-          interval: 1000
+          interval: 1000,
+          success(res) {
+            console.log(res);
+          }
         }
       }, {
         name: 'stopBluetoothDevicesDiscovery',
         method: 'stopBluetoothDevicesDiscovery',
         param: {
+          success(res) {
+            console.log(res);
+          }
         }
       }, {
         name: 'openBluetoothAdapter',
         method: 'openBluetoothAdapter',
         param: {
+          success(res) {
+            console.log(res);
+          }
         }
       }, {
         name: 'onBluetoothDeviceFound',
         method: 'onBluetoothDeviceFound',
         param: {
+          success(res) {
+            console.log(res);
+          }
         }
       }, {
         name: 'onBluetoothAdapterStateChange',
         method: 'onBluetoothAdapterStateChange',
         param: {
+          success(res) {
+            console.log(res);
+          }
         }
       }, {
         name: 'getConnectedBluetoothDevices',
         method: 'getConnectedBluetoothDevices',
         param: {
+          success(res) {
+            console.log(res);
+          }
         }
       }, {
         name: 'getBluetoothDevices',
         method: 'getBluetoothDevices',
         param: {
+          success(res) {
+            console.log(res);
+          }
         }
       }, {
         name: 'getBluetoothAdapterState',
         method: 'getBluetoothAdapterState',
         param: {
+          success(res) {
+            console.log(res);
+          }
         }
       }, {
         name: 'closeBluetoothAdapter',
         method: 'closeBluetoothAdapter',
         param: {
+          success(res) {
+            console.log(res);
+          }
         }
       }]
     }, {
@@ -223,7 +277,7 @@ class Index {
         param: {
           url: '/pages/nav/nav'
         }
-      },{
+      }, {
         name: 'reLaunch',
         method: 'reLaunch',
         param: {
@@ -240,7 +294,7 @@ class Index {
           title: 'Chameleon Title'
         }
       }]
-    },{
+    }, {
       name: '地理位置',
       subOpen: false,
       subList: [{
@@ -252,7 +306,7 @@ class Index {
           }
         }
       }]
-    },{
+    }, {
       name: '系统信息',
       subOpen: false,
       subList: [{
@@ -282,8 +336,8 @@ class Index {
       var param = item.param || {};
       cmlMini[method](param);
 
-      if(method == 'showLoading') {
-        setTimeout(()=>{
+      if (method == 'showLoading') {
+        setTimeout(() => {
           cmlMini.hideLoading();
         }, 5000)
       }
@@ -296,6 +350,11 @@ class Index {
   beforeMount(res) {
   }
   mounted(res) {
+    // 必须在这里的回调才能获取
+    cmlMini.onBLECharacteristicValueChange(function (characteristic) {
+      console.log('characteristic value comed:', characteristic)
+    })
+
   }
   beforeDestroy(res) {
   }
