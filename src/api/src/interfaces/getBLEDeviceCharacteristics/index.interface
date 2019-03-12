@@ -5,21 +5,21 @@
 
     type OptType = {
         // 3.还需要的参数的type(如果有)
-        title: String,		icon: String,		duration: Number,
+        deviceId: string,		serviceId: string,
         success: SuccessFunc,
         fail: FailFunc,
         complete: CompleteFunc
     };
 
     interface MethodsInterface {
-        showToast(opt: OptType): Void
+        getBLEDeviceCharacteristics(opt: OptType): Void
     }
 </script>
 
 <script cml-type="wx">
     class Method implements MethodsInterface {
-        showToast(opt) {
-            wx.showToast(opt);
+        getBLEDeviceCharacteristics(opt) {
+            wx.getBLEDeviceCharacteristics(opt);
         }
     }
 
@@ -28,17 +28,17 @@
 
 <script cml-type="alipay">
     class Method implements MethodsInterface {
-        showToast(opt) {
+        getBLEDeviceCharacteristics(opt) {
             let {
                 // 4.解构出来参数
-                title,				icon,				duration,
+                deviceId,				serviceId,
                 success,
                 fail,
                 complete
             } = opt;
-            my.showToast({
+            my.getBLEDeviceCharacteristics({
                 // 5.支付宝需要传的参数如果需要做兼容，进行替换，否则直接写在这里
-                content: title,				type: icon,				duration,
+                deviceId,				serviceId,
                 success,
                 fail,
                 complete

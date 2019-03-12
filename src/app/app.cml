@@ -33,6 +33,11 @@ export default new App();
       "navigationBarBackgroundColor": "#343434",
       "navigationBarTitleText": "CNODE",
       "navigationBarTextStyle": "#fff"
+    },
+    "permission": {
+      "scope.userLocation": {
+        "desc": "请求使用你的位置信息"
+      }
     }
   }
 }
