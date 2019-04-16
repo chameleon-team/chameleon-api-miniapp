@@ -8,12 +8,20 @@ cml.config.merge({
   templateLang: "cml",
   templateType: "html",
   platforms: ["alipay","wx"],
+  globalCheckWhiteList: [/node_modules/],
   buildInfo: {
     wxAppId: '123456',
     wxEntryPage: '',
     webPath: 'https://api.chameleon.com/h5/index'
   },
   wx: {
+    dev: {
+    },
+    build: {
+      apiPrefix
+    }
+  },
+  alipay: {
     dev: {
     },
     build: {

@@ -29,10 +29,10 @@ export default new App();
 {
   "wx": {
     "window": {
-      "backgroundTextStyle": "dark",
-      "navigationBarBackgroundColor": "#343434",
+      "backgroundTextStyle": "light",
+      "navigationBarBackgroundColor": "#ffffff",
       "navigationBarTitleText": "CNODE",
-      "navigationBarTextStyle": "#fff"
+      "navigationBarTextStyle": "black"
     },
     "permission": {
       "scope.userLocation": {

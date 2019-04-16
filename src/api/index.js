@@ -1,3 +1,4 @@
+import login from './src/interfaces/login/index.js';
 import showToast from './src/interfaces/showToast/index.js';
 import navigateTo from './src/interfaces/navigateTo/index.js';
 import navigateBack from './src/interfaces/navigateBack/index.js';
@@ -34,8 +35,11 @@ import getConnectedBluetoothDevices from './src/interfaces/getConnectedBluetooth
 import getBluetoothDevices from './src/interfaces/getBluetoothDevices/index.js';
 import getBluetoothAdapterState from './src/interfaces/getBluetoothAdapterState/index.js';
 import closeBluetoothAdapter from './src/interfaces/closeBluetoothAdapter/index.js';
+import makePhoneCall from './src/interfaces/makePhoneCall/index.js';
+
 
 export default {
+    login,
     showToast,
     navigateTo,
     navigateBack,
@@ -71,5 +75,6 @@ export default {
     getConnectedBluetoothDevices,
     getBluetoothDevices,
     getBluetoothAdapterState,
-    closeBluetoothAdapter
+    closeBluetoothAdapter, 
+    makePhoneCall
 };

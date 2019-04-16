@@ -101,6 +101,15 @@ class Index {
             say(res);
           }
         }
+      },{
+        name: 'makePhoneCall',
+        method: 'makePhoneCall',
+        param: {
+          phoneNumber: '18801199195',
+          success(res) {
+            say(res);
+          }
+        }
       }]
     }, {
       name: '页面导航',
@@ -158,6 +167,18 @@ class Index {
           }
         }
       }],
+    }, {
+      name: '用户信息',
+      subOpen: false,
+      subList: [{
+        name: 'login',
+        method: 'login',
+        param: {
+          success(res) {
+            say(res);
+          }
+        }
+      }]
     }]
   }
   computed = {
