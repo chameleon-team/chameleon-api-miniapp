@@ -1,24 +1,12 @@
 <script cml-type="interface">
-  type SuccessFunc = (res: CMLObject) => Void;
-  type FailFunc = (res: CMLObject) => Void;
-  type CompleteFunc = (res: CMLObject) => Void;
-
-  type OptType = {
-    // 3.还需要的参数的type(如果有)
-    success: SuccessFunc,
-    fail: FailFunc,
-    complete: CompleteFunc
-  };
-
   interface MethodsInterface {
-    createSelectorQuery(opt: OptType): Void
   }
 </script>
 
 <script cml-type="wx">
   class Method implements MethodsInterface {
-    createSelectorQuery(opt) {
-      wx.createSelectorQuery(opt);
+    createSelectorQuery() {
+      return wx.createSelectorQuery();
     }
   }
 
@@ -27,8 +15,8 @@
 
 <script cml-type="alipay">
   class Method implements MethodsInterface {
-    createSelectorQuery(opt) {
-      my.createSelectorQuery(opt);
+    createSelectorQuery() {
+      return my.createSelectorQuery();
     }
   }
 
