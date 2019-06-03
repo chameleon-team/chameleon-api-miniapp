@@ -6,7 +6,7 @@ export default function getLocation(opt = {}) {
 
     let {
         // 1.这里处理默认参数
-        
+        type = 'wgs84',
         success = noop,
         fail = noop,
         complete = noop
@@ -14,7 +14,7 @@ export default function getLocation(opt = {}) {
 
     index.getLocation({
         // 2.这里把参数传进去
-        
+        type,
         success,
         fail,
         complete
