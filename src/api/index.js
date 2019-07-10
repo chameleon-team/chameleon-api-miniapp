@@ -15,6 +15,7 @@ import createAnimation from './src/interfaces/createAnimation/index.js';
 import request from './src/interfaces/request/index.js';
 import uploadFile from './src/interfaces/uploadFile/index.js';
 import createMapContext from './src/interfaces/createMapContext/index.js';
+import createCanvasContext from './src/interfaces/createCanvasContext/index.js';
 import MapContext from './src/interfaces/MapContext/index.js';
 import navigateToMiniProgram from './src/interfaces/navigateToMiniProgram/index.js';
 import readBLECharacteristicValue from './src/interfaces/readBLECharacteristicValue/index.js';
@@ -58,6 +59,7 @@ export default {
   request,
   uploadFile,
   createMapContext,
+  createCanvasContext,
   MapContext,
   navigateToMiniProgram,
   readBLECharacteristicValue,
