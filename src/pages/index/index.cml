@@ -41,7 +41,6 @@
               </view>
             </view>
           </view>
-          <orgin-map name="" id="t-map"></orgin-map>
         </view>
       </scroller>
     </view>
@@ -77,6 +76,14 @@ class Index {
           icon: 'success',
           duration: 2000
         }
+      },{
+        name: 'hideToast',
+        method: 'hideToast',
+        param: {
+          title: '你好toast',
+          icon: 'success',
+          duration: 2000
+        }
       }, {
         name: 'showLoading',
         method: 'showLoading',
@@ -99,6 +106,18 @@ class Index {
           confirmText: '充值',
           success(res) {
             say(res);
+          }
+        }
+      }, {
+        name: 'showActionSheet',
+        method: 'showActionSheet',
+        param: {
+          itemList: ['A', 'B', 'C'],
+          success (res) {
+            say(res.tapIndex)
+          },
+          fail (res) {
+            say(res.errMsg)
           }
         }
       },{
@@ -141,6 +160,30 @@ class Index {
         method: 'setNavigationBarTitle',
         param: {
           title: 'Chameleon Title'
+        }
+      }]
+    }, {
+      name: '存储',
+      subOpen: false,
+      subList: [{
+        name: 'setStorageSync',
+        method: 'storage',
+        param: {
+          action: 'set'
+        }
+      }, 
+      {
+        name: 'getStorageSync',
+        method: 'storage',
+        param: {
+          action: 'get'
+        }
+      },
+      {
+        name: 'removeStorageSync',
+        method: 'storage',
+        param: {
+          action: 'remove'
         }
       }]
     }, {
@@ -195,12 +238,33 @@ class Index {
       const item = this.lists[index]['subList'][subIndex];
       const method = item.method;
       var param = item.param || {};
-      cmlMini[method](param);
 
       if (method == 'showLoading') {
         setTimeout(() => {
           cmlMini.hideLoading();
         }, 5000)
+      } else if (method == 'storage') {
+        this.storage(param)
+      } else {
+        cmlMini[method](param);
+      }
+    },
+    storage({action = ''}) {
+      if (action === 'set') {
+        cmlMini.setStorageSync('name', 'ironman');
+        cml.showToast({
+          message: 'setStorageSync成功'
+        });
+      } else if (action === 'get') {
+        console.log(cmlMini.getStorageSync('name'));
+        cml.showToast({
+          message: JSON.stringify(cmlMini.getStorageSync('name'))
+        });
+      } else if (action === 'remove') {
+        cml.removeStorage('name')
+        cml.showToast({
+          message: 'name 值已删除'
+        });
       }
     },
     uploadFile() {

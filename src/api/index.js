@@ -1,5 +1,7 @@
 import login from './src/interfaces/login/index.js';
+import showActionSheet from './src/interfaces/showActionSheet/index.js';
 import showToast from './src/interfaces/showToast/index.js';
+import hideToast from './src/interfaces/hideToast/index.js';
 import navigateTo from './src/interfaces/navigateTo/index.js';
 import navigateBack from './src/interfaces/navigateBack/index.js';
 import redirectTo from './src/interfaces/redirectTo/index.js';
@@ -40,10 +42,15 @@ import makePhoneCall from './src/interfaces/makePhoneCall/index.js';
 import createSelectorQuery from './src/interfaces/createSelectorQuery/index.js';
 import offBLECharacteristicValueChange from './src/interfaces/offBLECharacteristicValueChange/index.js';
 import pay from './src/interfaces/pay/index.js';
+import setStorageSync from './src/interfaces/setStorageSync/index.js';
+import getStorageSync from './src/interfaces/getStorageSync/index.js';
+import removeStorageSync from './src/interfaces/removeStorageSync/index.js';
 
 export default {
   login,
+  showActionSheet,
   showToast,
+  hideToast,
   navigateTo,
   navigateBack,
   redirectTo,
@@ -83,5 +90,8 @@ export default {
   makePhoneCall,
   createSelectorQuery,
   offBLECharacteristicValueChange,
-  pay
+  pay,
+  setStorageSync,
+  getStorageSync,
+  removeStorageSync
 };
