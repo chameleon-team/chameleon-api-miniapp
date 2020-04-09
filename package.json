@@ -1,6 +1,6 @@
 {
   "name": "@didi/chameleon-api-miniapp",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Chameleon跨多端小程序api",
   "main": "index.js",
   "author": {
