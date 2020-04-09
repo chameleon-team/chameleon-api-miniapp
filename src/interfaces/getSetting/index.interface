@@ -11,7 +11,7 @@
     };
 
     interface MethodsInterface {
-        openSetting(opt: OptType): Void
+        getSetting(opt: OptType): Void
     }
 </script>
 
