@@ -2,12 +2,11 @@ import index from './index.interface';
 
 export default function login(opt = {}) {
   const noop = (res) => {};
-
   let {
     // 1.这里处理默认参数
     success = noop,
-    fail = noop,
-    complete = noop
+      fail = noop,
+      complete = noop
   } = opt;
 
   index.login({

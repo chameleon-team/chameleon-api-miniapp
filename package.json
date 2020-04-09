@@ -1,6 +1,6 @@
 {
   "name": "@didi/chameleon-api-miniapp",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Chameleon跨多端小程序api",
   "main": "index.js",
   "author": {
@@ -16,5 +16,10 @@
     "chameleon"
   ],
   "license": "Apache",
-  "devDependencies": {}
+  "devDependencies": {
+    "chameleon-api": "1.0.4",
+    "chameleon-runtime": "^1.0.0",
+    "fs-extra": "^7.0.1",
+    "chameleon-store": "^1.0.0"
+  }
 }
