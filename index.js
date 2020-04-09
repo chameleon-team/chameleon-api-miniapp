@@ -45,7 +45,8 @@ import pay from './src/interfaces/pay/index.js';
 import setStorageSync from './src/interfaces/setStorageSync/index.js';
 import getStorageSync from './src/interfaces/getStorageSync/index.js';
 import removeStorageSync from './src/interfaces/removeStorageSync/index.js';
-
+import getSetting from './src/interfaces/getSetting/index.js';
+import openSetting from './src/interfaces/openSetting/index.js';
 export default {
   login,
   showActionSheet,
@@ -93,5 +94,7 @@ export default {
   pay,
   setStorageSync,
   getStorageSync,
-  removeStorageSync
+  removeStorageSync,
+  getSetting,
+  openSetting
 };
