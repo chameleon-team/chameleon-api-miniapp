@@ -1,0 +1,44 @@
+<script cml-type="interface">
+    interface MethodsInterface {}
+</script>
+
+<script cml-type="wx">
+class Method implements MethodsInterface {
+    openSetting(successFunc,failFunc,completeFunc,wxWithSubscriptions) {
+      return wx.openSetting({
+          withSubscriptions: wxWithSubscriptions,
+          success:(res)=>{
+            successFunc(res)
+          },
+          fail:(err)=>{
+            failFunc(err)
+          },
+          complete:(data)=>{
+            completeFunc(data)
+          }
+      });
+    }
+}
+
+export default new Method();
+</script>
+
+<script cml-type="alipay">
+class Method implements MethodsInterface {
+    openSetting(successFunc,failFunc,completeFunc,wxWithSubscriptions) {
+        return my.openSetting({
+            success:(res)=>{
+              successFunc(res)
+            },
+            fail:(err)=>{
+              failFunc(err)
+            },
+            complete:(data)=>{
+              completeFunc(data)
+            }
+        });
+    }
+}
+
+export default new Method();
+</script>

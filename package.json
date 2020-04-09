@@ -11,7 +11,10 @@
     "type": "git",
     "url": ""
   },
-  "scripts": {},
+  "scripts": {
+    "pub": "npm version patch && npm publish",
+    "alpha": "npm version prerelease --preid=alpha && npm publish"
+  },
   "keywords": [
     "chameleon"
   ],
