@@ -1,22 +1,24 @@
 <script cml-type="interface">
-    interface MethodsInterface {}
+    type SuccessFunc = (res: CMLObject) => Void;
+    type FailFunc = (res: CMLObject) => Void;
+    type CompleteFunc = (res: CMLObject) => Void;
+   
+    type OptType = {
+        withSubscriptions: boolean,
+        success: SuccessFunc,
+        fail: FailFunc,
+        complete: CompleteFunc
+    };
+
+    interface MethodsInterface {
+        openSetting(opt: OptType): Void
+    }
 </script>
 
 <script cml-type="wx">
 class Method implements MethodsInterface {
-    getSetting(successFunc,failFunc,completeFunc,wxWithSubscriptions) {
-      return wx.getSetting({
-          withSubscriptions: wxWithSubscriptions,
-          success:(res)=>{
-            successFunc(res)
-          },
-          fail:(err)=>{
-            failFunc(err)
-          },
-          complete:(data)=>{
-            completeFunc(data)
-          }
-      });
+    getSetting(opt) {
+      wx.getSetting(opt);
     }
 }
 
@@ -25,18 +27,8 @@ export default new Method();
 
 <script cml-type="alipay">
 class Method implements MethodsInterface {
-    getSetting(successFunc,failFunc,completeFunc,wxWithSubscriptions) {
-        return my.getSetting({
-            success:(res)=>{
-              successFunc(res)
-            },
-            fail:(err)=>{
-              failFunc(err)
-            },
-            complete:(data)=>{
-              completeFunc(data)
-            }
-        });
+    getSetting(opt) {
+      my.getSetting(opt);
     }
 }
 

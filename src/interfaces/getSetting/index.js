@@ -1,5 +1,14 @@
 import index from './index.interface';
 
-export default function getSetting(successFunc,failFunc,completeFunc,wxWithSubscriptions=false) {
-    return index.getSetting(successFunc,failFunc,completeFunc,wxWithSubscriptions)
+export default function getSetting(opt={}) {
+    const noop = (res) => {};
+
+    let {
+        withSubscriptions = false,
+        success = noop,
+        fail = noop,
+        complete = noop
+    } = opt;
+
+    return index.getSetting(opt)
 }
