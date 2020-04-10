@@ -26,7 +26,7 @@
     "chameleon-store": "^1.0.0"
   },
   "files": [
-    "./src/interfaces/*",
-    "./index.js"
+    "src/interfaces/**/*",
+    "index.js"
   ]
 }
