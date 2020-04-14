@@ -17,9 +17,7 @@
 <script cml-type="alipay">
     class Method implements MethodsInterface {
         getStorageSync(key) {
-            return my.getStorageSync({
-                key
-            });
+            return my.getStorageSync({key}) && my.getStorageSync({key}).data;
         }
     }
 
