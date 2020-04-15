@@ -4,7 +4,7 @@
     type CompleteFunc = (res: CMLObject) => Void;
    
     type OptType = {
-        withSubscriptions: Boolean,
+        withSubscriptions: boolean,
         success: SuccessFunc,
         fail: FailFunc,
         complete: CompleteFunc

@@ -10,5 +10,10 @@ export default function openSetting(opt={}) {
         complete = noop
     } = opt;
 
-    return index.openSetting(opt)
+    return index.openSetting({
+        withSubscriptions,
+        success,
+        fail,
+        complete,
+    })
 }
