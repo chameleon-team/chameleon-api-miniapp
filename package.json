@@ -1,6 +1,6 @@
 {
   "name": "@didi/chameleon-api-miniapp",
-  "version": "0.0.15-alpha.8",
+  "version": "0.0.15-alpha.9",
   "description": "Chameleon跨多端小程序api",
   "main": "index.js",
   "author": {
@@ -15,9 +15,7 @@
     "pub": "npm version patch && npm publish",
     "alpha": "npm version prerelease --preid=alpha && npm publish"
   },
-  "keywords": [
-    "chameleon"
-  ],
+  "keywords": ["chameleon"],
   "license": "Apache",
   "devDependencies": {
     "chameleon-api": "1.0.4",
@@ -25,8 +23,5 @@
     "fs-extra": "^7.0.1",
     "chameleon-store": "^1.0.0"
   },
-  "files": [
-    "src/interfaces/**/*",
-    "index.js"
-  ]
+  "files": ["src/interfaces/**/*", "index.js"]
 }
