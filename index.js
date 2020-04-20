@@ -47,6 +47,8 @@ import getStorageSync from './src/interfaces/getStorageSync/index.js';
 import removeStorageSync from './src/interfaces/removeStorageSync/index.js';
 import getSetting from './src/interfaces/getSetting/index.js';
 import openSetting from './src/interfaces/openSetting/index.js';
+import scanCode from './src/interfaces/scanCode/index.js';
+
 export default {
   login,
   showActionSheet,
@@ -96,5 +98,6 @@ export default {
   getStorageSync,
   removeStorageSync,
   getSetting,
-  openSetting
+  openSetting,
+  scanCode
 };
